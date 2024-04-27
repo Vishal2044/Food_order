@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .img-responsive {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .footer {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: blue;
+      color: white;
+    }
+
+    .btn-success {
+      background-color: green;
+      color: white;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <section class="navbar">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/logo.png" alt="Restaurant Logo" class="img-responsive">
+        </a>
+      </div>
+      <div class="menu text-right">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="foods.html">Foods</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </section>
+
+  <section class="payment">
+    <div class="container">
+      <h2 class="text-center">Payment Information</h2>
+      
+      <div class="order-summary">
+        <div class="food-info">
+          <img id="food-img" class="img-responsive img-curve" alt="Food Image">
+          <h3 id="food-name">Food Name</h3>
+          <p>Quantity: <span id="quantity">1</span></p>
+          <p>Total Price: ₹<span id="total-price">0.00</span></p>
+        </div>
+        
+        <div class="customer-info">
+          <h3>Customer Details</h3>
+          <p>Full Name: <span id="full-name">John Doe</span></p>
+          <p>Contact: <span id="contact">1234567890</span></p>
+          <p>Room Number: <span id="room-number">101</span></p>
+        </div>
+      </div>
+
+      <div class="confirm-payment text-center">
+        <button id="confirm-payment-btn" class="btn btn-primary">Confirm Payment</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="footer">
+    <div class="container text-center">
+      <p>All rights reserved. Designed by <a href="#">Your Name</a>.</p>
+    </div>
+  </section>
+
+  <!-- Popup Modal for Payment Gateway Options -->
+  <div id="payment-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Select a Payment Method</h3>
+      <button class="btn btn-success">Credit/Debit Card</button>
+      <button class="btn btn-success">Google Pay</button>
+      <button class="btn btn-success">Cash on Delivery</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const params = new URLSearchParams(window.location.search);
+
+      const foodName = params.get("name");
+      const foodPrice = parseFloat(params.get("price"));
+      const foodImg = params.get("img");
+      const quantity = parseInt(params.get("quantity"), 10);
+      const fullName = params.get("full-name");
+      const contact = params.get("contact");
+      const roomNumber = params.get("room-number");
+
+      const totalPrice = foodPrice * quantity;
+
+      // Set the retrieved information in the correct places
+      document.getElementById("food-name").textContent = foodName;
+      document.getElementById("food-img").src = foodImg;
+      document.getElementById("food-img").alt = foodName;
+      document.getElementById("quantity").textContent = quantity;
+      document.getElementById("total-price").textContent = totalPrice.toFixed(2);
+      document.getElementById("full-name").textContent = fullName;
+      document.getElementById("contact").textContent = contact;
+      document.getElementById("room-number").textContent = roomNumber;
+
+      const confirmButton = document.getElementById("confirm-payment-btn");
+      const paymentModal = document.getElementById("payment-modal");
+      const closeButton = paymentModal.querySelector(".close");
+
+      confirmButton.addEventListener("click", function() {
+        paymentModal.style.display = "flex"; // Show the modal
+      });
+
+      closeButton.addEventListener("click", function() {
+        paymentModal.style.display = "none"; // Hide the modal
+      });
+
+      window.addEventListener("click", function(event) {
+        if (event.target === paymentModal) {
+          paymentModal.style.display = "none"; // Hide the modal if clicking outside of it
+        }
+      });
+    });
+  </script>
+</body>
+</html>

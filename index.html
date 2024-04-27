@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Website</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- Navbar Section Starts Here -->
+    <section class="navbar">
+      <div class="container">
+        <div class="logo">
+          <a href="#" title="Logo">
+            <img
+              src="images/logo.png"
+              alt="Restaurant Logo"
+              class="img-responsive"
+            />
+          </a>
+        </div>
+
+        <div class="menu text-right">
+          <ul>
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+            <li>
+              <a href="categories.html">Categories</a>
+            </li>
+            <li>
+              <a href="foods.html">Foods</a>
+            </li>
+            <li>
+              <a href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+    </section>
+    <!-- Navbar Section Ends Here -->
+
+    <!-- fOOD sEARCH Section Starts Here -->
+    <section class="food-search text-center">
+      <div class="container">
+        <form action="food-search.html" method="POST">
+          <input
+            type="search"
+            name="search"
+            placeholder="Search for Food.."
+            required
+          />
+          <input
+            type="submit"
+            name="submit"
+            value="Search"
+            class="btn btn-primary"
+          />
+        </form>
+      </div>
+    </section>
+    <!-- fOOD sEARCH Section Ends Here -->
+
+    <!-- CAtegories Section Starts Here -->
+    <section class="categories">
+      <div class="container">
+        <h2 class="text-center">Explore Foods</h2>
+
+        <a href="category-foods.html">
+          <div class="box-3 float-container">
+            <img
+              src="images/pizza.jpg"
+              alt="Pizza"
+              class="img-responsive img-curve"
+            />
+
+            <h5 class="float-text">Pizza</h5>
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="box-3 float-container">
+            <img
+              src="images/burger.jpg"
+              alt="Burger"
+              class="img-responsive img-curve"
+            />
+
+            <h5 class="float-text">Burger</h5>
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="box-3 float-container">
+            <img
+              src="images/momo.jpg"
+              alt="Momo"
+              class="img-responsive img-curve"
+            />
+
+            <h5 class="float-text">Momo</h5>
+          </div>
+        </a>
+
+        <div class="clearfix"></div>
+      </div>
+    </section>
+    <!-- Categories Section Ends Here -->
+
+    <!-- fOOD MEnu Section Starts Here -->
+    <section class="food-menu">
+      <div class="container">
+        <h2 class="text-center">Food Menu</h2>
+
+        <div class="food-menu-box">
+          <div class="food-menu-img">
+            <img
+              src="images/Special Punjabi Thali.avif"
+              alt="Special Punjabi Thali"
+              class="img-responsive img-curve"
+            />
+          </div>
+
+          <div class="food-menu-desc">
+            <h4>Special Punjabi Thali</h4>
+            <p class="food-price">₹195</p>
+            <p class="food-detail">
+              Serves 1 | 1 paneer sabji + veg sabji
+            </p>
+            <br />
+
+            <a href="order.html" class="btn btn-primary">Order Now</a>
+          </div>
+        </div>
+
+        <div class="food-menu-box">
+          <div class="food-menu-img">
+            <img
+              src="images/dal-fry.avif"
+              alt="Dal Fry jeera rice combo"
+              class="img-responsive img-curve"
+            />
+          </div>
+
+          <div class="food-menu-desc">
+            <h4>Dal Fry jeera rice combo</h4>
+            <p class="food-price">₹150</p>
+            <p class="food-detail">
+              Serves 1 | Rice (300 gm) + Dal Fry (200 Gm)
+            </p>
+            <br />
+
+            <a href="order.html" class="btn btn-primary">Order Now</a>
+          </div>
+        </div>
+
+        <div class="food-menu-box">
+          <div class="food-menu-img">
+            <img
+              src="images/paneer_matter.avif"
+              alt="Paneer Matar"
+              class="img-responsive img-curve"
+            />
+          </div>
+
+          <div class="food-menu-desc">
+            <h4>Paneer Matar</h4>
+            <p class="food-price">₹175</p>
+            <p class="food-detail">
+              Images used are for representation purposes only
+            </p>
+            <br />
+
+            <a
+              href="order.html?name=Chicke%20Hawain%20Pizza&price=2.3&img=images/menu-pizza.jpg"
+              class="btn btn-primary"
+              >Order Now</a
+            >
+          </div>
+        </div>
+
+        <div class="food-menu-box">
+          <div class="food-menu-img">
+            <img
+              src="images/chole_bature.avif"
+              alt="Chole Bhature"
+              class="img-responsive img-curve"
+            />
+          </div>
+
+          <div class="food-menu-desc">
+            <h4>Chole Bhature</h4>
+            <p class="food-price">₹180</p>
+            <p class="food-detail">
+              Made with Italian Sauce, Chicken, and organic vegetables.
+            </p>
+            <br />
+
+            <a href="order.html" class="btn btn-primary">Order Now</a>
+          </div>
+        </div>
+
+        <div class="food-menu-box">
+          <div class="food-menu-img">
+            <img
+              src="images/guj_thali.avif"
+              alt="Gujarati Thali"
+              class="img-responsive img-curve"
+            />
+          </div>
+
+          <div class="food-menu-desc">
+            <h4>Gujarati Thali</h4>
+            <p class="food-price">₹300</p>
+            <p class="food-detail">
+              Made with Italian Sauce, Chicken, and organic vegetables.
+            </p>
+            <br />
+
+            <a href="order.html" class="btn btn-primary">Order Now</a>
+          </div>
+        </div>
+
+        <div class="food-menu-box">
+          <div class="food-menu-img">
+            <img
+              src="images/menu-momo.jpg"
+              alt="Steam Momo"
+              class="img-responsive img-curve"
+            />
+          </div>
+
+          <div class="food-menu-desc">
+            <h4>Steam Momo</h4>
+            <p class="food-price">₹157</p>
+            <p class="food-detail">
+              Made with Italian Sauce, Chicken, and organic vegetables.
+            </p>
+            <br />
+
+            <a href="order.html" class="btn btn-primary">Order Now</a>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+
+      <p class="text-center">
+        <a href="fullmenu.html">See All Foods</a>
+      </p>
+    </section>
+    <!-- fOOD Menu Section Ends Here -->
+
+    <!-- social Section Starts Here -->
+    <section class="social">
+      <div class="container text-center">
+        <ul>
+          <li>
+            <a href="#"
+              ><img
+                src="https://img.icons8.com/fluent/50/000000/facebook-new.png"
+            /></a>
+          </li>
+          <li>
+            <a href="#"
+              ><img
+                src="https://img.icons8.com/fluent/48/000000/instagram-new.png"
+            /></a>
+          </li>
+          <li>
+            <a href="#"
+              ><img src="https://img.icons8.com/fluent/48/000000/twitter.png"
+            /></a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- social Section Ends Here -->
+
+    <!-- footer Section Starts Here -->
+    <section class="footer">
+      <div class="container text-center">
+        <p>All rights reserved. <a href="#"></a></p>
+      </div>
+    </section>
+    <!-- footer Section Ends Here -->
+    
+    <script>
+      document.querySelectorAll(".food-menu-box a.btn-primary").forEach((btn) => {
+        btn.addEventListener("click", function (event) {
+          const foodMenuBox = this.closest(".food-menu-box");
+          const foodName = foodMenuBox.querySelector(".food-menu-desc h4").textContent;
+          let foodPrice = foodMenuBox.querySelector(".food-price").textContent;
+
+          // Extracting only numbers from the price to ensure correct format
+          foodPrice = foodPrice.replace(/[^\d.]/g, ''); // Removes all non-numeric characters
+
+          const foodImg = foodMenuBox.querySelector(".food-menu-img img").src;
+
+          localStorage.setItem("foodName", foodName);
+          localStorage.setItem("foodPrice", foodPrice);
+          localStorage.setItem("foodImg", foodImg);
+        });
+      });
+    </script>
+
+  </body>
+</html>

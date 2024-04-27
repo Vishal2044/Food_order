@@ -1,0 +1,181 @@
+<!-- order.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Restaurant Website</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <section class="navbar">
+    <div class="container">
+      <div class="logo">
+        <a href="#" title="Logo">
+          <img src="images/logo.png" alt="Restaurant Logo" class="img-responsive" />
+        </a>
+      </div>
+      <div class="menu text-right">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="foods.html">Foods</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </section>
+
+  <section class="food-search">
+    <div class="container">
+      <h2 class="text-center text-white">Fill this form to confirm your order.</h2>
+
+      <form class="order">
+        <fieldset>
+          <legend>Selected Food</legend>
+
+          <div class="food-menu-img">
+            <img
+              src="images/menu-pizza.jpg"
+              alt="Chicken Hawaiian Pizza"
+              class="img-responsive img-curve"
+            />
+          </div>
+
+          <div class="food-menu-desc">
+            <h3>Food Title</h3>
+            <p class="food-price" data-base-price="2.3"></p>
+            <div id="foodQuantity" class="counter">
+              <a id="decrease"><i class="fas fa-minus"></i></a>
+              <input type="text" id="value" value="1" readonly />
+              <a id="increase"><i class="fas fa-plus"></i></a>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Delivery Details</legend>
+          <div class="order-label">Full Name</div>
+          <input type="text" name="full-name" placeholder="E.g. Rahul Gandhi" class="input-responsive" required />
+
+          <div class="order-label">Phone Number</div>
+          <input type="tel" name="contact" placeholder="E.g. 9090909090" class="input-responsive" required />
+
+          <div class="order-label">Room Number</div>
+          <input type="number" name="room-number" placeholder="E.g. 101" class="input-responsive" required />
+
+          <a
+            id="confirmOrder"
+            class="btn btn-primary"
+          >Confirm</a>
+        </fieldset>
+      </form>
+    </div>
+  </section>
+
+  <section class="social">
+    <div class="container text-center">
+      <ul>
+        <li>
+          <a href="#"
+            ><img src="https://img.icons8.com/fluent/50/000000/facebook-new.png"
+          /></a>
+        </li>
+        <li>
+          <a href="#"
+            ><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png"
+          /></a>
+        </li>
+        <li>
+          <a href="#"
+            ><img src="https://img.icons8.com/fluent/48/000000/twitter.png"
+          /></a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="footer">
+    <div class="container text-center">
+      <p>All rights reserved. Designed By <a href="#"></a></p>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const getQueryParam = (name) => new URLSearchParams(window.location.search).get(name);
+
+      const foodName =
+        getQueryParam("name") || localStorage.getItem("foodName");
+      const foodPrice =
+        getQueryParam("price") || localStorage.getItem("foodPrice");
+      const foodImg =
+        getQueryParam("img") || localStorage.getItem("foodImg");
+
+      const foodTitleElement = document.querySelector(".food-menu-desc h3");
+      const foodPriceElement = document.querySelector(".food-price");
+      const foodImageElement = document.querySelector(".food-menu-img img");
+
+      if (
+        foodName &&
+        foodPrice &&
+        foodImg &&
+        foodTitleElement &&
+        foodPriceElement &&
+        foodImageElement
+      ) {
+        foodTitleElement.textContent = foodName;
+        foodPriceElement.textContent = `₹${parseFloat(foodPrice).toFixed(2)}`;
+        foodImageElement.src = foodImg;
+        foodImageElement.alt = foodName;
+
+        const valueInput = document.getElementById("value");
+        const decreaseButton = document.getElementById("decrease");
+        const increaseButton = document.getElementById("increase");
+
+        const basePrice = parseFloat(foodPrice);
+
+        const updateTotalPrice = () => {
+          const currentQuantity = parseInt(valueInput.value, 10);
+          const newTotalPrice = basePrice * currentQuantity;
+          foodPriceElement.textContent = `₹${newTotalPrice.toFixed(2)}`;
+        };
+
+        increaseButton.addEventListener("click", () => {
+          valueInput.value = (parseInt(valueInput.value, 10) + 1).toString();
+          updateTotalPrice();
+        });
+
+        decreaseButton.addEventListener("click", () => {
+          const currentValue = parseInt(valueInput.value, 10);
+          if (currentValue > 1) {
+            valueInput.value = (currentValue - 1).toString();
+            updateTotalPrice();
+          }
+        });
+
+        updateTotalPrice();
+
+        const confirmOrderButton = document.getElementById("confirmOrder");
+
+        confirmOrderButton.addEventListener("click", (event) => {
+          const fullName = document.querySelector("input[name='full-name']").value;
+          const contact = document.querySelector("input[name='contact']").value;
+          const roomNumber = document.querySelector("input[name='room-number']").value;
+          const quantity = parseInt(valueInput.value, 10);
+
+          const queryString = `?name=${encodeURIComponent(foodName)}&price=${encodeURIComponent(foodPrice)}&img=${encodeURIComponent(foodImg)}&full-name=${encodeURIComponent(fullName)}&contact=${encodeURIComponent(contact)}&room-number=${encodeURIComponent(roomNumber)}&quantity=${quantity}`;
+
+          confirmOrderButton.href = `payment.html${queryString}`;
+        });
+      } else {
+        console.error("Required elements not found or undefined.");
+      }
+    });
+  </script>
+</body>
+</html>
